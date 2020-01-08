@@ -2,7 +2,7 @@ version: '3.7'
 services: 
     mysql:
         container_name: mysql_schuelerverwaltung
-        restart: always
+        restart: unless-stopped
         image: mysql:latest
         environment: 
             MYSQL_DATABASE: schueler
