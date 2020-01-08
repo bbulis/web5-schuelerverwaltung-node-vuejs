@@ -76,7 +76,7 @@ app.get('/reset', async(req, res) => {
 app.get('/testing', async(req, res) => {
     try {
         result = await sequelize.authenticate()
-        res.send(JSON.stringify({ "type": "success" }))
+        res.send(JSON.stringify({ "success": true }))
     } catch (err) {
         res.send(JSON.stringify(err))
     }
