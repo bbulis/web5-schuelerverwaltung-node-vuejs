@@ -16,3 +16,6 @@ Aufteilung in Backend und Frontend. Zusätzlich gibt es noch eine Datenbank welc
 > | ```/reset```        | Setzt die Datenbank zurück und erstellt zwei neue Schüler | -                                        | Array von neuen Schülern                  | ```GET```    |
 > | ```/testing```      | Testet die Verbindung zur Datenbank                       | -                                        | Gibt eine Meldung zurück wenn erfolgreich | ```GET```    |
 
+## Backend
+
+Das Backend ist in NodeJs geschrieben und verfügt mittels der Sequelize Libary die Möglichkeit mit einer MySQL Datenbank zu kommunizieren. 

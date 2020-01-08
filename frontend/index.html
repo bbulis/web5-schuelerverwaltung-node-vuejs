@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schülerverwaltung</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="app">
+        <table ref="table" style="width: 50%">
+            <tr>
+                <th>id</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Klasse</th>
+                <th>Zweig</th>
+                <th></th>
+            </tr>
+            <tr v-for="schueler in schuelers">
+                <td>{{ schueler.id }}</td>
+                <td>{{ schueler.firstname }}</td>
+                <td>{{ schueler.lastname }}</td>
+                <td>{{ schueler.klasse }}</td>
+                <td>{{ schueler.zweig }}</td>
+                <!-- Knopf welcher ein Element aus dem Array entfernt -> Methode welche in JavaScript erstellt wurde -->
+                <td><button type="button" v-on:click="deleteSchueler(schueler)">Löschen</button></td>
+            </tr>
+        </table>
+
+        <div id="form-group">
+            <p>Vorname</p><input v-model="firstname">
+            <p>Nachname</p><input v-model="lastname">
+            <p>Klasse</p><input v-model="klasse">
+            <p>Zweig</p><input v-model="zweig">
+            <!-- Methode welche aufgerufen wird wenn ein neuer Schüler hinzugefügt wird -->
+            <button type="button" v-on:click="addSchueler">Hinzufügen</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

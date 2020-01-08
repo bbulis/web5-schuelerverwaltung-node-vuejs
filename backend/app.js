@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const Sequelize = require('sequelize')
 const sequelize = require('./config')
@@ -9,6 +10,7 @@ const Schueler = require('./models/schueler')
 const PORT = process.env.PORT || 3000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cors())
 
 app.get('/schueler', async(req, res) => {
     let schuelers = await Schueler.findAll()
@@ -30,6 +32,8 @@ app.post('/schueler', async(req, res) => {
     let Inputklasse = req.body.klasse
     let Inputzweig = req.body.zweig
 
+    console.log(req.body)
+
     let [schueler, created] = await Schueler.findOrCreate({ where: { firstname: Inputfirstname, lastname: Inputlastname, klasse: Inputklasse, zweig: Inputzweig } })
 
     if (created) {
@@ -45,9 +49,9 @@ app.delete('/schueler/:id', async(req, res) => {
             where: { id: req.params.id }
         })
         if (result == 1) {
-            res.send(JSON.stringify({ "deleted": true }))
+            res.send(JSON.stringify({ "success": true }))
         } else {
-            res.send(JSON.stringify({ "deleted": false }))
+            res.send(JSON.stringify({ "success": false }))
         }
     } catch (err) {
         res.send(JSON.stringify({ "error": true, "data": err }))
