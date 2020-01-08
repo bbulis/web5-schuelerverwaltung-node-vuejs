@@ -32,6 +32,11 @@ app.post('/schueler', async(req, res) => {
 
     let [schueler, created] = await Schueler.findOrCreate({ where: { firstname: Inputfirstname, lastname: Inputlastname, klasse: Inputklasse, zweig: Inputzweig } })
 
+    if (created) {
+        res.send(JSON.stringify({ "success": true, "data": schueler }))
+    } else {
+        res.send(JSON.stringify({ "success": false, "data": "schueler already exists" }))
+    }
 })
 
 app.delete('/schueler/:id', async(req, res) => {
