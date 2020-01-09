@@ -13,3 +13,10 @@ th,
 td {
     padding: 15px;
 }
+
+#form-group {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

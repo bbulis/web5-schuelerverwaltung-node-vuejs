@@ -1,5 +1,6 @@
 # web5-schuelerverwaltung-node-vuejs
 ## Aufgabenstellung
+
 Die Aufgabenstellung war es die beiden ersten Übungen zusammenzuführen und diese dann lauffähig in zwei seperaten System zu entwickeln.
 
 ## Übersicht der Entwicklung
@@ -15,7 +16,3 @@ Aufteilung in Backend und Frontend. Zusätzlich gibt es noch eine Datenbank welc
 > | ```/schueler/:id``` | Löscht einen bestimmten Schüler                           | ```id```                                 | Bestätigung                               | ```DELETE``` |
 > | ```/reset```        | Setzt die Datenbank zurück und erstellt zwei neue Schüler | -                                        | Array von neuen Schülern                  | ```GET```    |
 > | ```/testing```      | Testet die Verbindung zur Datenbank                       | -                                        | Gibt eine Meldung zurück wenn erfolgreich | ```GET```    |
-
-## Backend
-
-Das Backend ist in NodeJs geschrieben und verfügt mittels der Sequelize Libary die Möglichkeit mit einer MySQL Datenbank zu kommunizieren. 
