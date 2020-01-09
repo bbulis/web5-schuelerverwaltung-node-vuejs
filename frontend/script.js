@@ -1,7 +1,8 @@
+// Array wo die Schüler lokal gesichert werden
 let schuelers = [];
-
+// URL an welche die Requests gesendet werden
 let url = 'http://localhost:3000';
-
+// Schüler Objekt
 function Schueler(id, firstname, lastname, klasse, zweig) {
     this.id = id;
     this.firstname = firstname;
@@ -11,10 +12,13 @@ function Schueler(id, firstname, lastname, klasse, zweig) {
 }
 
 let app = new Vue({
+    // Element auf welches Vue zugreifen soll
     el: '#app',
+    // Methode welche direkt beim Start ausgeführt werden soll
     mounted: function() {
         this.getSchuelers()
     },
+    // Daten welche mit dem v-model korespondieren
     data: {
         firstname: '',
         lastname: '',
@@ -22,10 +26,13 @@ let app = new Vue({
         zweig: '',
         schuelers
     },
+    // Auflistung aller Methoden
     methods: {
+        // Methode um alle Schüler vom Backend zu holen
         getSchuelers: async function() {
             this.schuelers = []
             try {
+                // Axios führt einen AJAX Request an das Backend aus 
                 const resp = await axios.get(url + '/schueler');
                 for (let i = 0; i < resp.data.data.length; i++) {
                     this.schuelers.push(
@@ -42,6 +49,7 @@ let app = new Vue({
                 console.log(err)
             }
         },
+        // Methode welche einen Schüler hinzufügt
         addSchueler: async function() {
             try {
                 const resp = await axios.post(url + '/schueler', {
@@ -59,6 +67,7 @@ let app = new Vue({
                 console.log(error)
             }
         },
+        // Methode welche einen Schüler löscht
         deleteSchueler: async function(inputSchueler) {
             try {
                 const resp = await axios.delete(url + '/schueler/' + inputSchueler.id)
